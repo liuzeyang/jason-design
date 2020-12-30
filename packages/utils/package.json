@@ -40,5 +40,6 @@
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "yorkie": "^2.0.0"
-  }
+  },
+  "gitHead": "4699ea4c8b191ca84d0dd4a4f826ea822a9d59a8"
 }
