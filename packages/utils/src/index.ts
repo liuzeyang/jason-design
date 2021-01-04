@@ -1,2 +1,2 @@
-export { toArray } from './functions/toArray';
+export { default as toArray } from './functions/toArray';
 export { isReactFragment } from './functions/isReactFragment';
