@@ -11,7 +11,7 @@ import SiderTabsContext from './context';
 import { Tab, TabBarExtraContent } from './interface';
 import SiderTabNav from '../SiderTabNav';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-export interface SiderTabs {
+export interface SiderTabs extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     prefixCls?: string;
     style?: React.CSSProperties;
     size?: string;
@@ -19,7 +19,7 @@ export interface SiderTabs {
     defaultActiveKey?: string;
     destroyInactiveTabPane?: boolean;
     tabBarStyle?: React.CSSProperties;
-    tabBarExtraContent: TabBarExtraContent,
+    tabBarExtraContent?: TabBarExtraContent,
     // renderTabBar?: RenderTabBar;
     onChange?: (activeKey: string) => void;
     onTabClick?: (activeKey: string, e: React.MouseEvent | React.KeyboardEvent) => void;
@@ -43,7 +43,9 @@ function parseTabList(children: React.ReactNode): Tab[] {
       })
       .filter(tab => tab !== null) as Tab[];
   }
-export type SiderTabsProps = SiderTabs & Omit<DrawerProps, 'visible' | 'placement'>;
+export type SiderTabsProps = {
+    SiderTabsPane: typeof SiderTabsPane
+} & SiderTabs & Omit<DrawerProps, 'visible' | 'placement'>;
 
 export const SiderTabs: React.FC<SiderTabsProps> = (props) => {
     const {
@@ -156,7 +158,3 @@ export const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         </SiderTabsContext.Provider>
     )
 }
-
-export type ForwardTabsType = typeof SiderTabs & { SiderTabsPane: typeof SiderTabsPane };
-
-(SiderTabs as ForwardTabsType).SiderTabsPane = SiderTabsPane;
