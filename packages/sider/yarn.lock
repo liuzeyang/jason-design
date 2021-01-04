@@ -1286,10 +1286,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@jason-design/utils@^1.0.5-alpha.0":
-  version "1.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@jason-design/utils/-/utils-1.0.5-alpha.0.tgz#a5cb162850e04b70af54fcc46033ca9eedaead15"
-  integrity sha512-vrM/tDnmhHyzfnmH8u0bnGqdgU7bTefwOs8nat9nyfXctmRy4mILbSOlDdaLRve0oGr8a/pjOEK8cOs71k9xVA==
+"@jason-design/utils@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jason-design/utils/-/utils-1.0.5.tgz#4a26ebb19f5f3f4ea890e43714ea20a40fa6c426"
+  integrity sha512-KDEo61Es5R8oPYyHciboBI4PeVjyyCZB7o9Uo11TdIqSMgLY+TvQeOWAGml4AKi7C22aOn2hRkLx27WtYHxXNg==
   dependencies:
     react "^16.12.0"
 
@@ -1950,6 +1950,11 @@
   integrity sha512-aGI3DfswwqgKPiEOTaiHV2ZPC9KEhprpgEbJnv0fZl3SGX0cGgEva1126dGrMC6AJM6v/aihlUgJn9M5DbDZ/Q==
   dependencies:
     "@types/node" "*"
+
+"@types/classnames@^2.2.11":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
+  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
 
 "@types/clipboard@^2.0.1":
   version "2.0.1"
@@ -12734,7 +12739,7 @@ rc-upload@~3.3.1:
     classnames "^2.2.5"
     rc-util "^5.2.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.1.0, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.3.0, rc-util@^5.4.0, rc-util@^5.5.0:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.1.0, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.3.0, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.6.2:
   version "5.6.2"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.6.2.tgz#7c3f4516a8a6215a57d8d41b65c1b9925d915d89"
   integrity sha512-AKG+5l3EXRnArgf8fm14CClkf20CovgV38juTz/uiQEHLa0nDyoJWw/7BvIIny893Pvwm3TTwokxIs3rsqZ6kw==
