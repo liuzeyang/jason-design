@@ -1,6 +1,6 @@
 {
   "name": "@jason-design/sider",
-  "version": "1.0.5-alpha.0",
+  "version": "1.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@jason-design/utils": "^1.0.5-alpha.0",
+    "@jason-design/utils": "^1.0.5",
     "antd": "^4.9.4",
     "classnames": "^2.2.6",
     "react": "^16.12.0"
