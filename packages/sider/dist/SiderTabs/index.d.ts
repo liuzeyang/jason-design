@@ -4,7 +4,7 @@ import React from 'react';
 import { DrawerProps } from 'antd/lib/drawer/index';
 import { SiderTabsPane } from '../SiderTabPane';
 import { TabBarExtraContent } from './interface';
-export interface SiderTabs extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface BaseSiderTabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     prefixCls?: string;
     style?: React.CSSProperties;
     size?: string;
@@ -18,5 +18,5 @@ export interface SiderTabs extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
 }
 export declare type SiderTabsProps = {
     SiderTabsPane: typeof SiderTabsPane;
-} & SiderTabs & Omit<DrawerProps, 'visible' | 'placement'>;
+} & BaseSiderTabsProps & Omit<DrawerProps, 'visible' | 'placement'>;
 export declare const SiderTabs: React.FC<SiderTabsProps>;
