@@ -1,6 +1,6 @@
 {
   "name": "@jason-design/utils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publishConfig": {
     "access": "public"
   },
@@ -28,8 +28,6 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
-  },
-  "dependencies": {
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",
