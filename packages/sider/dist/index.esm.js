@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import React, { createContext, forwardRef, useEffect, createElement, useContext, useRef, useState } from 'react';
+import React, { useState, useEffect, createContext, forwardRef, createElement, useContext, useRef } from 'react';
 import { ConfigProvider, Drawer } from 'antd';
 import classNames from 'classnames';
 import KeyCode from 'rc-util/lib/KeyCode';
@@ -202,6 +202,53 @@ function toArray(children) {
   });
   return ret;
 }
+
+var SiderTabsPane = function SiderTabsPane(props) {
+  var prefixCls = props.prefixCls,
+      forceRender = props.forceRender,
+      className = props.className,
+      style = props.style,
+      id = props.id,
+      active = props.active,
+      animated = props.animated,
+      destroyInactiveTabPane = props.destroyInactiveTabPane,
+      tabKey = props.tabKey,
+      children = props.children;
+
+  var _useState = useState(forceRender),
+      _useState2 = _slicedToArray(_useState, 2),
+      visited = _useState2[0],
+      setVisited = _useState2[1];
+
+  useEffect(function () {
+    if (active) {
+      setVisited(true);
+    } else if (destroyInactiveTabPane) {
+      setVisited(false);
+    }
+  }, [active, destroyInactiveTabPane]);
+  var mergedStyle = {};
+
+  if (!active) {
+    if (animated) {
+      mergedStyle.visibility = 'hidden';
+      mergedStyle.height = 0;
+      mergedStyle.overflowY = 'hidden';
+    } else {
+      mergedStyle.display = 'none';
+    }
+  }
+
+  return /*#__PURE__*/React.createElement("div", {
+    id: id && "".concat(id, "-panel-").concat(tabKey),
+    role: "tabpanel",
+    tabIndex: active ? 0 : -1,
+    "aria-labelledby": id && "".concat(id, "-tab-").concat(tabKey),
+    "aria-hidden": !active,
+    style: _objectSpread2(_objectSpread2({}, mergedStyle), style),
+    className: classNames("".concat(prefixCls, "-sider-tabpane"), active && "".concat(prefixCls, "-sider-tabpane-active"), className)
+  }, (active || visited || forceRender) && children);
+};
 
 var SiderTabsContext = /*#__PURE__*/createContext({});
 
@@ -459,7 +506,6 @@ var SiderTabs = function SiderTabs(props) {
     style: tabBarStyle,
     panes: children
   };
-  console.log(getContainer);
   return /*#__PURE__*/React.createElement(SiderTabsContext.Provider, {
     value: {
       tabs: tabs,
@@ -496,5 +542,7 @@ var SiderTabs = function SiderTabs(props) {
     });
   }))));
 };
+
+SiderTabs.SiderTabsPane = SiderTabsPane;
 
 export { SiderTabs };

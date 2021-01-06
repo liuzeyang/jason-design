@@ -16,7 +16,10 @@ export interface BaseSiderTabsProps extends Omit<React.HTMLAttributes<HTMLDivEle
     onChange?: (activeKey: string) => void;
     onTabClick?: (activeKey: string, e: React.MouseEvent | React.KeyboardEvent) => void;
 }
-export declare type SiderTabsProps = {
+export declare type SiderTabsProps = BaseSiderTabsProps & Omit<DrawerProps, 'visible' | 'placement'>;
+declare const SiderTabs: React.FC<SiderTabsProps>;
+export declare type SiderTabsType = typeof SiderTabs & {
     SiderTabsPane: typeof SiderTabsPane;
-} & BaseSiderTabsProps & Omit<DrawerProps, 'visible' | 'placement'>;
-export declare const SiderTabs: React.FC<SiderTabsProps>;
+};
+declare const _default: SiderTabsType;
+export default _default;

@@ -1,1 +1,2 @@
-export { SiderTabs } from './SiderTabs';
+import SiderTabs from './SiderTabs';
+export { SiderTabs };
