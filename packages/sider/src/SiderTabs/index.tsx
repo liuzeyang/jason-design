@@ -16,11 +16,14 @@ export interface BaseSiderTabsProps extends Omit<React.HTMLAttributes<HTMLDivEle
     style?: React.CSSProperties;
     size?: string;
     activeKey?: string;
+    visible?: boolean;
+    defaultVisible?: boolean;
     defaultActiveKey?: string;
     destroyInactiveTabPane?: boolean;
     tabBarStyle?: React.CSSProperties;
     tabBarExtraContent?: TabBarExtraContent,
     // renderTabBar?: RenderTabBar;
+    onClose?: () => void;
     onChange?: (activeKey: string) => void;
     onTabClick?: (activeKey: string, e: React.MouseEvent | React.KeyboardEvent) => void;
     // editable?: EditableConfig;
@@ -52,10 +55,13 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         style,
         size = 'small',
         activeKey,
+        visible,
+        defaultVisible,
         defaultActiveKey,
         tabBarExtraContent,
         onChange,
         onTabClick,
+        onClose,
         tabBarStyle,
         width = 300,
         getContainer,
@@ -64,7 +70,7 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         ...drawerProps
     } = props;
    
-    const [visible, setVisible] = useState(false)
+    const [mergedVisible, setMergedVisible] = useState<boolean>(visible ?? false);
     const tabs = parseTabList(children);
     
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
@@ -78,6 +84,12 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
     const [activeIndex, setActiveIndex] = useState(() =>
         tabs.findIndex(tab => tab.key === mergedActiveKey),
     );
+    // =================== set visible =========
+    useEffect(() => {
+        if (visible !== undefined) {
+            setMergedVisible(visible);
+        }
+    }, [visible])
     // Reset active key if not exist anymore
     useEffect(() => {
         let newActiveIndex = tabs.findIndex(tab => tab.key === mergedActiveKey);
@@ -101,7 +113,7 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
     }, [drawerProps.mask, width])
     
     function onInternalTabClick(key: string, e: React.MouseEvent | React.KeyboardEvent) {
-        !visible && setVisible(true) 
+        !mergedVisible && setMergedVisible(true) 
         onTabClick?.(key, e);
         setMergedActiveKey(key);
         onChange?.(key);
@@ -115,13 +127,16 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         style: tabBarStyle,
         panes: children,
     };
+    const tab = tabs.find((tab) => tab.key === mergedActiveKey);
+    console.log(mergedVisible);
     
     return (
         <SiderTabsContext.Provider value={{ tabs, prefixCls }}>
             <DrawerWrp
-                visible={visible}
+                visible={mergedVisible}
                 width={width}
-                onClose={() => setVisible(false)}
+                title={tab?.title ?? tab?.tab}
+                onClose={onClose ? onClose : () => setMergedVisible(false)}
                 placement="right"
                 getContainer={getContainer}
                 {...drawerProps}

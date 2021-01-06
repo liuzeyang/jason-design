@@ -8,6 +8,7 @@ export interface SiderTabPaneProps {
     forceRender?: boolean;
     closable?: boolean;
     closeIcon?: React.ReactNode;
+    title?: React.ReactNode;
     prefixCls?: string;
     tabKey?: string;
     id?: string;

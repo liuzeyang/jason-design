@@ -9,10 +9,13 @@ export interface BaseSiderTabsProps extends Omit<React.HTMLAttributes<HTMLDivEle
     style?: React.CSSProperties;
     size?: string;
     activeKey?: string;
+    visible?: boolean;
+    defaultVisible?: boolean;
     defaultActiveKey?: string;
     destroyInactiveTabPane?: boolean;
     tabBarStyle?: React.CSSProperties;
     tabBarExtraContent?: TabBarExtraContent;
+    onClose?: () => void;
     onChange?: (activeKey: string) => void;
     onTabClick?: (activeKey: string, e: React.MouseEvent | React.KeyboardEvent) => void;
 }

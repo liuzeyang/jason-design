@@ -411,28 +411,33 @@ function parseTabList(children) {
 }
 
 var SiderTabs = function SiderTabs(props) {
+  var _tab$title;
+
   var customizePrefixCls = props.prefixCls,
       className = props.className,
       style = props.style,
       _props$size = props.size,
       size = _props$size === void 0 ? 'small' : _props$size,
       activeKey = props.activeKey,
+      visible = props.visible,
+      defaultVisible = props.defaultVisible,
       defaultActiveKey = props.defaultActiveKey,
       tabBarExtraContent = props.tabBarExtraContent,
       onChange = props.onChange,
       onTabClick = props.onTabClick,
+      onClose = props.onClose,
       tabBarStyle = props.tabBarStyle,
       _props$width = props.width,
       width = _props$width === void 0 ? 300 : _props$width,
       getContainer = props.getContainer,
       children = props.children,
       destroyInactiveTabPane = props.destroyInactiveTabPane,
-      drawerProps = _objectWithoutProperties(props, ["prefixCls", "className", "style", "size", "activeKey", "defaultActiveKey", "tabBarExtraContent", "onChange", "onTabClick", "tabBarStyle", "width", "getContainer", "children", "destroyInactiveTabPane"]);
+      drawerProps = _objectWithoutProperties(props, ["prefixCls", "className", "style", "size", "activeKey", "visible", "defaultVisible", "defaultActiveKey", "tabBarExtraContent", "onChange", "onTabClick", "onClose", "tabBarStyle", "width", "getContainer", "children", "destroyInactiveTabPane"]);
 
-  var _useState = useState(false),
+  var _useState = useState(visible !== null && visible !== void 0 ? visible : false),
       _useState2 = _slicedToArray(_useState, 2),
-      visible = _useState2[0],
-      setVisible = _useState2[1];
+      mergedVisible = _useState2[0],
+      setMergedVisible = _useState2[1];
 
   var tabs = parseTabList(children);
 
@@ -460,8 +465,14 @@ var SiderTabs = function SiderTabs(props) {
   }),
       _useState4 = _slicedToArray(_useState3, 2),
       activeIndex = _useState4[0],
-      setActiveIndex = _useState4[1]; // Reset active key if not exist anymore
+      setActiveIndex = _useState4[1]; // =================== set visible =========
 
+
+  useEffect(function () {
+    if (visible !== undefined) {
+      setMergedVisible(visible);
+    }
+  }, [visible]); // Reset active key if not exist anymore
 
   useEffect(function () {
     var newActiveIndex = tabs.findIndex(function (tab) {
@@ -493,7 +504,7 @@ var SiderTabs = function SiderTabs(props) {
   }, [drawerProps.mask, width]);
 
   function onInternalTabClick(key, e) {
-    !visible && setVisible(true);
+    !mergedVisible && setMergedVisible(true);
     onTabClick === null || onTabClick === void 0 ? void 0 : onTabClick(key, e);
     setMergedActiveKey(key);
     onChange === null || onChange === void 0 ? void 0 : onChange(key);
@@ -506,16 +517,21 @@ var SiderTabs = function SiderTabs(props) {
     style: tabBarStyle,
     panes: children
   };
+  var tab = tabs.find(function (tab) {
+    return tab.key === mergedActiveKey;
+  });
+  console.log(mergedVisible);
   return /*#__PURE__*/React.createElement(SiderTabsContext.Provider, {
     value: {
       tabs: tabs,
       prefixCls: prefixCls
     }
   }, /*#__PURE__*/React.createElement(DrawerWrp, Object.assign({
-    visible: visible,
+    visible: mergedVisible,
     width: width,
-    onClose: function onClose() {
-      return setVisible(false);
+    title: (_tab$title = tab === null || tab === void 0 ? void 0 : tab.title) !== null && _tab$title !== void 0 ? _tab$title : tab === null || tab === void 0 ? void 0 : tab.tab,
+    onClose: onClose ? onClose : function () {
+      return setMergedVisible(false);
     },
     placement: "right",
     getContainer: getContainer
