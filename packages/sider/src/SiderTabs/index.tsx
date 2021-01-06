@@ -117,7 +117,7 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
     };
     
     return (
-        <SiderTabsContext.Provider value={{ tabs, prefixCls}}>
+        <SiderTabsContext.Provider value={{ tabs, prefixCls }}>
             <DrawerWrp
                 visible={visible}
                 width={width}
