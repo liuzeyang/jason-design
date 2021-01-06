@@ -128,7 +128,6 @@ const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         panes: children,
     };
     const tab = tabs.find((tab) => tab.key === mergedActiveKey);
-    console.log(mergedVisible);
     
     return (
         <SiderTabsContext.Provider value={{ tabs, prefixCls }}>
