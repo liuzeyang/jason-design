@@ -43,11 +43,9 @@ function parseTabList(children: React.ReactNode): Tab[] {
       })
       .filter(tab => tab !== null) as Tab[];
   }
-export type SiderTabsProps = {
-    SiderTabsPane: typeof SiderTabsPane
-} & BaseSiderTabsProps & Omit<DrawerProps, 'visible' | 'placement'>;
+export type SiderTabsProps = BaseSiderTabsProps & Omit<DrawerProps, 'visible' | 'placement'>;
 
-export const SiderTabs: React.FC<SiderTabsProps> = (props) => {
+const SiderTabs: React.FC<SiderTabsProps> = (props) => {
     const {
         prefixCls: customizePrefixCls ,
         className,
@@ -117,7 +115,6 @@ export const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         style: tabBarStyle,
         panes: children,
     };
-    console.log(getContainer);
     
     return (
         <SiderTabsContext.Provider value={{ tabs, prefixCls}}>
@@ -158,3 +155,9 @@ export const SiderTabs: React.FC<SiderTabsProps> = (props) => {
         </SiderTabsContext.Provider>
     )
 }
+export type SiderTabsType = typeof SiderTabs & {
+    SiderTabsPane: typeof SiderTabsPane
+} 
+(SiderTabs as SiderTabsType).SiderTabsPane = SiderTabsPane;
+
+export default SiderTabs as SiderTabsType;
