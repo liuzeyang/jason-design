@@ -1,6 +1,6 @@
 {
   "name": "@jason-design/popup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@jason-design/utils": "^1.0.6",
+    "@jason-design/utils": "^1.0.7",
     "classnames": "^2.2.6",
     "rc-util": "^5.6.2"
   },
