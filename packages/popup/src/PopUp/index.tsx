@@ -11,7 +11,7 @@ import { ConfigContext } from 'antd/lib/config-provider';
 import classNames from 'classnames';
 
 export interface PopUpProps extends AbstractTooltipProps{
-    trigger: 'trigger' | 'hover';
+    trigger?: 'click' | 'hover';
     title: React.ReactNode | RenderFunction;
     onVisibleChange?: (
         visible: boolean,

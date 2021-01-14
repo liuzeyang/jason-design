@@ -4,7 +4,7 @@ import React from 'react';
 import { AbstractTooltipProps } from 'antd/lib/tooltip';
 import { RenderFunction } from '@jason-design/utils/dist/functions/getRenderPropValue';
 export interface PopUpProps extends AbstractTooltipProps {
-    trigger: 'trigger' | 'hover';
+    trigger?: 'click' | 'hover';
     title: React.ReactNode | RenderFunction;
     onVisibleChange?: (visible: boolean, e?: React.MouseEvent | React.KeyboardEvent) => void;
 }
