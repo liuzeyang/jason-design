@@ -11,6 +11,7 @@ import { ConfigContext } from 'antd/lib/config-provider';
 import classNames from 'classnames';
 
 export interface PopUpProps extends AbstractTooltipProps{
+    trigger: 'trigger' | 'hover';
     title: React.ReactNode | RenderFunction;
     onVisibleChange?: (
         visible: boolean,
@@ -23,7 +24,7 @@ export interface PopUpState {
   }
 
 const PopUp = React.forwardRef<unknown, PopUpProps>((props: PopUpProps, ref) => {
-    const [visible, setVisible] = useState(props.visible);
+    const [visible, setVisible] = useState<boolean | undefined>(props.visible || false);
     
     useEffect(() => {
         if ('visible' in props) {
@@ -78,10 +79,10 @@ const PopUp = React.forwardRef<unknown, PopUpProps>((props: PopUpProps, ref) => 
         ...restProps
       } = props;
 
-    const prefixCls = getPrefixCls('popup', customizePrefixCls);
-    const prefixClsConfirm = getPrefixCls('popup', customizePrefixCls);
+    const prefixCls = getPrefixCls('popover', customizePrefixCls);
+    const prefixClsConfirm = getPrefixCls('popconfirm', customizePrefixCls);
     const overlayClassNames = classNames(prefixClsConfirm, overlayClassName);
-  
+    
     return <Tooltip 
         {...restProps}
         prefixCls={prefixCls}
@@ -102,5 +103,10 @@ const PopUp = React.forwardRef<unknown, PopUpProps>((props: PopUpProps, ref) => 
         })}
     </Tooltip>
 });
+PopUp.defaultProps = {
+    transitionName: 'zoom-big',
+    placement: 'top' as PopUpProps['placement'],
+    trigger: 'click' as PopUpProps['trigger'],
+  };
 
 export default PopUp;
