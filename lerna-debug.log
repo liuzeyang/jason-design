@@ -1,7 +1,6 @@
-38 error Error: Command failed: git add -- packages/utils/package.json packages/utils/package-lock.json packages/sider/package.json packages/sider/package-lock.json
+38 error Error: Command failed: git add -- packages/helps/package.json packages/helps/package-lock.json
 38 error The following paths are ignored by one of your .gitignore files:
-38 error packages/sider/package-lock.json
-38 error packages/utils/package-lock.json
+38 error packages/helps/package-lock.json
 38 error hint: Use -f if you really want to add them.
 38 error hint: Turn this message off by running
 38 error hint: "git config advice.addIgnoredFile false"
