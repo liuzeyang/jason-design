@@ -4,9 +4,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

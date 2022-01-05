@@ -1,0 +1,116 @@
+:root {
+  --jason-color-primary: #1677ff;
+  --jason-color-success: #00b578;
+  --jason-color-warning: #ff8f1f;
+  --jason-color-danger: #ff3141;
+  --jason-color-white: #ffffff;
+  --jason-color-weak: #999999;
+  --jason-color-light: #cccccc;
+  --jason-border-color: #eeeeee;
+  --jason-font-size-main: 13px;
+  --jason-color-text: #333333;
+
+  --jason-font-family: -apple-system, blinkmacsystemfont, 'Helvetica Neue',
+    helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui',
+    'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+@class-prefix-index-bar: ~'jason-index-bar';
+
+.@{class-prefix-index-bar} {
+  --color: var(--jason-color-text);
+  overflow: hidden;
+
+  height: 100%;
+  position: relative;
+  background-color: var(--jason-color-white);
+  --sticky-offset-top: 0;
+
+  &-body {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-anchor {
+    &-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 35px;
+      padding: 0 12px;
+      color: var(--jason-color-weak);
+      font-size: 13px;
+      background-color: #f5f5f5;
+    }
+  }
+
+  &-sidebar {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 3;
+    overflow: visible;
+    color: var(--jason-color-weak);
+    font-size: 12px;
+    user-select: none;
+    touch-action: none;
+
+    &-bubble {
+      position: absolute;
+      top: 50%;
+      right: 42px;
+      width: 47px;
+      height: 47px;
+      color: var(--jason-color-white);
+      font-size: 25px;
+      line-height: 47px;
+      text-align: center;
+      background: var(--jason-color-light);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-row {
+      cursor: pointer;
+      width: auto;
+      text-align: right;
+      position: relative;
+      padding: 0 12px;
+      > * {
+        pointer-events: none;
+      }
+    }
+
+    &-item {
+      display: inline-flex;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-item-active {
+      color: #fff;
+      background-color: var(--jason-color-primary);
+      border-radius: 50%;
+    }
+
+    &-interacting {
+      width: 100%;
+    }
+  }
+
+  &-sticky {
+    .@{class-prefix-index-bar}-anchor-title {
+      position: sticky;
+      top: var(--sticky-offset-top);
+      left: 0;
+    }
+  }
+}
