@@ -1,10 +1,10 @@
-38 error Error: Command failed: git add -- packages/helps/package.json packages/helps/package-lock.json
-38 error The following paths are ignored by one of your .gitignore files:
-38 error packages/helps/package-lock.json
-38 error hint: Use -f if you really want to add them.
-38 error hint: Turn this message off by running
-38 error hint: "git config advice.addIgnoredFile false"
-38 error
-38 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
-38 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
-38 error     at processTicksAndRejections (internal/process/task_queues.js:93:5)
+40 error Error: Command failed: git add -- packages/indexbar/package.json packages/indexbar/package-lock.json
+40 error The following paths are ignored by one of your .gitignore files:
+40 error packages/indexbar/package-lock.json
+40 error hint: Use -f if you really want to add them.
+40 error hint: Turn this message off by running
+40 error hint: "git config advice.addIgnoredFile false"
+40 error
+40 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
+40 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
+40 error     at processTicksAndRejections (internal/process/task_queues.js:93:5)
